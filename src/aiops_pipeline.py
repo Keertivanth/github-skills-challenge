@@ -15,14 +15,13 @@ def run_pipeline(file_path):
     data = load_data(file_path)
 
     # INTENTIONAL ASSESSMENT ISSUE #2
-    producer_topic = EventTopic("service-events")
+    anomaly_topic = EventTopic("anomaly-events")
 
     detector = AnomalyDetector()
-    producer = EventProducer(producer_topic)
+    producer = EventProducer(anomaly_topic)
 
     # INTENTIONAL ASSESSMENT ISSUE #3
-    consumer_topic = EventTopic("anomaly-events")
-    consumer = EventConsumer(consumer_topic)
+    consumer = EventConsumer(anomaly_topic)
 
     detected_events = []
 
@@ -60,27 +59,3 @@ if __name__ == "__main__":
         print(f"Timestamp: {event['timestamp']}")
         print(f"Type: {event['type']}")
         print(f"Reasons: {', '.join(event['reasons'])}")
-        README.md
-        aiops_pipeline.py
-        src
-        aiops_pipeline.py
-        …
-        
-        625960615657585455
-                print(f"Reasons: {', '.join(event['reasons'])}")        print(f"\nService: {event['service']}")        print(f"Timestamp: {event['timestamp']}")        print(f"Type: {event['type']}")    print("\nDetected Events:")    for event in result["events_consumed"]:    print(f"Events consumed: {len(result['events_consumed'])}")
-                README.md
-                aiops_pipeline.py
-                src
-                aiops_pipeline.py
-                …
-                
-                706263646566676869
-                                print(f"Reasons: {', '.join(event['reasons'])}")        print(f"\nService: {event['service']}")        print(f"Timestamp: {event['timestamp']}")        print(f"Type: {event['type']}")    print("\nDetected Events:")    for event in result["events_consumed"]:    print(f"Events consumed: {len(result['events_consumed'])}")        print(f"Reasons: {', '.join(event['reasons'])}")        README.md        aiops_pipeline.py        src        aiops_pipeline.py        …                625960615657585455
-                                README.md
-                                aiops_pipeline.py
-                                src
-                                aiops_pipeline.py
-                                …
-                                
-                                78
-                                                                print(f"Reasons: {', '.join(event['reasons'])}")        print(f"\nService: {event['service']}")        print(f"Timestamp: {event['timestamp']}")        print(f"Type: {event['type']}")    print("\nDetected Events:")    for event in result["events_consumed"]:    print(f"Events consumed: {len(result['events_consumed'])}")        print(f"Reasons: {', '.join(event['reasons'])}")        README.md        aiops_pipeline.py        src        aiops_pipeline.py        …                625960615657585455
