@@ -210,4 +210,15 @@ the demonstration without relying on screenshots.
 4. Run the tests with `python3 -m pytest -q`.
 5. Review the detected-event output and the test result.
 
+## Task 9: Commit and Push the Submission
+
+Before submission, the repository was reviewed to ensure that the changes are limited
+to the relevant AIOps source corrections and assessment documentation. The validation
+suite and end-to-end pipeline were run successfully, then the changes were committed
+with meaningful messages and pushed to the fork at
+`https://github.com/Keertivanth/github-skills-challenge`.
+
+The final branch is `main`, and the latest commit is available on `origin/main`. The
+repository is ready for final submission and pull-request creation.
+
 &copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
