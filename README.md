@@ -62,11 +62,24 @@ The records at `10:05` and `10:06` are anomalous:
 | `10:05` | 610 ms response time, `ERROR`, payment service timeout | High response time; error log |
 | `10:06` | 640 ms response time, 94% CPU, 91% memory, `ERROR`, database connection timeout | High response time; high CPU; high memory; error log |
 
-## Detection Findings
+## Task 3: Identify Anomalies
 
-The detector uses thresholds of 500 ms response time, 80% CPU, and 80% memory. It also
-flags `WARNING` and `ERROR` log levels. The run detected two anomalies and did not flag
-the eight normal records. No expected anomaly in the supplied data was missed.
+The provided `AnomalyDetector` was used without replacing its architecture. It processes
+each record and applies thresholds of 500 ms response time, 80% CPU, and 80% memory. It
+also identifies `WARNING` and `ERROR` log levels as concerning events.
+
+The detection report identified these two anomalies:
+
+- `2026-09-20T10:05:00`: `payment-service` had a 610 ms response time and an `ERROR`
+  log stating `Payment service timeout`. Reasons: high response time and error log.
+- `2026-09-20T10:06:00`: `payment-service` had a 640 ms response time, 94% CPU, and
+  91% memory, with an `ERROR` log stating `Database connection timeout`. Reasons: high
+  response time, high CPU utilization, high memory utilization, and error log.
+
+The detector processed all 10 operational records, produced readable anomaly events
+with timestamps, service names, reasons, and the original source records, and returned
+no event for the eight normal `INFO` records. No expected anomaly was missed and no
+normal observation was incorrectly flagged in the supplied data.
 
 The detector's main limitation is its use of fixed thresholds. It does not learn a
 service baseline or account for time-of-day variation, so a gradual performance change
