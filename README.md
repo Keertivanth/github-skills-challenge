@@ -86,7 +86,7 @@ service baseline or account for time-of-day variation, so a gradual performance 
 below a threshold could be missed. A possible improvement is a rolling baseline with
 configurable alert sensitivity and correlation of repeated failures.
 
-## Event-Processing Flow
+## Task 4: Verify the AIOps Event Flow
 
 The workflow is:
 
@@ -100,9 +100,28 @@ Operational data
   -> AIOps output
 ```
 
-An event contains its timestamp, service, type, detection reasons, and original source
-record. The producer publishes each event to the shared `anomaly-events` topic, and the
-consumer receives the same events from that topic.
+The provided components have these roles:
+
+- **Event/message:** The detector creates an anomaly event containing the timestamp,
+  service, type, detection reasons, and original source record.
+- **Producer:** `EventProducer` accepts each detected event and publishes it.
+- **Topic:** `EventTopic("anomaly-events")` stores the published events in memory.
+- **Consumer:** `EventConsumer` reads the events from the same topic.
+- **Downstream AIOps output:** `run_pipeline` returns the consumed events in its
+  `events_consumed` result field.
+
+The complete flow was verified as follows:
+
+1. The detector identified two anomalous records and created two `ANOMALY` events.
+2. Each event was passed to `EventProducer.publish`.
+3. The producer published both events to the shared `anomaly-events` topic.
+4. `EventConsumer` read both events from that topic.
+5. The consumer returned the event messages with their original details and reasons.
+6. The pipeline returned both consumed events as the downstream AIOps output.
+
+The execution result was 10 records processed, 2 anomalies detected, and 2 events
+consumed. This confirms that an anomaly travels through the complete simulated
+producer-to-topic-to-consumer workflow.
 
 ## Issues Found and Corrected
 
