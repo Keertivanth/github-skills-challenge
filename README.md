@@ -139,7 +139,7 @@ processed 10 records, detected 2 anomalies, consumed 2 events, and printed both
 payment-service incidents with their detection reasons. The test suite also completed
 successfully with 8 passing tests.
 
-## Execution Result
+## Task 6: Execute the End-to-End Pipeline
 
 Run from the repository root:
 
@@ -148,8 +148,17 @@ PYTHONPATH=src python3 src/aiops_pipeline.py
 ```
 
 The final execution processed 10 records, detected 2 anomalies, and consumed 2 events.
-The output identified the payment-service timeout at `10:05` and the database
-connection timeout with high CPU and memory at `10:06`.
+The end-to-end requirements were verified as follows:
+
+1. Operational data was loaded and 10 records were processed.
+2. Abnormal behaviour was detected in the records at `10:05` and `10:06`.
+3. Two `ANOMALY` events were generated with timestamps, services, reasons, and source
+  records.
+4. The events were published by `EventProducer` to `anomaly-events`.
+5. Both published events were consumed from the topic by `EventConsumer`.
+6. The consumed event messages were returned successfully in `events_consumed`.
+7. The final output represented the payment-service timeout and database connection
+  timeout, including the high CPU and memory evidence for the second incident.
 
 Validation was completed with:
 
