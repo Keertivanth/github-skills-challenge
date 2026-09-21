@@ -123,14 +123,21 @@ The execution result was 10 records processed, 2 anomalies detected, and 2 event
 consumed. This confirms that an anomaly travels through the complete simulated
 producer-to-topic-to-consumer workflow.
 
-## Issues Found and Corrected
+## Task 5: Investigate and Correct the Workflow
 
-1. The detector only treated `WARNING` as a concerning log level. It now handles both
-	`WARNING` and `ERROR` while preserving the existing detector architecture.
-2. The producer and consumer were connected to different topics. They now share the
-	`anomaly-events` topic, allowing published events to be consumed.
-3. Stray non-Python text appended to `src/aiops_pipeline.py` was removed so the module
-	can be imported and executed.
+The initial assessment environment contained three workflow issues. Each correction
+kept the existing detector, producer, topic, consumer, and pipeline architecture.
+
+| Affected component | Cause | Correction and verification |
+| --- | --- | --- |
+| `src/anomaly_detector.py` | The log check treated `WARNING` as the only concerning log level, so `ERROR` records were not explicitly handled by the log rule. | The detector now handles both `WARNING` and `ERROR`. Re-running the pipeline reports `Error log detected` for both anomalous records. |
+| `src/aiops_pipeline.py` producer/consumer wiring | The producer was created with `service-events`, while the consumer was created with a separate `anomaly-events` topic. Published events could not reach that consumer. | Both components now use the same `anomaly-events` topic. Re-running the pipeline produces 2 events and consumes the same 2 events. |
+| `src/aiops_pipeline.py` source integrity | Stray non-Python text had been appended after the final output statement. | The appended text was removed. The module now imports and executes successfully. |
+
+After each correction, the affected workflow was executed again. The final verification
+processed 10 records, detected 2 anomalies, consumed 2 events, and printed both
+payment-service incidents with their detection reasons. The test suite also completed
+successfully with 8 passing tests.
 
 ## Execution Result
 
