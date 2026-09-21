@@ -16,3 +16,11 @@ Good luck!
 
 &copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
 
+md) &bull; [MIT License](https://gh.io/mit)
+README.md
+README.md
+# GitHub Challenge
+Text Editor
+
+19181516171314
+md) &bull; [MIT License](https://gh.io/mit)contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)---&copy; 2025 GitHub &bull; [Code of Conduct](https://www.1# GitHub Challenge
