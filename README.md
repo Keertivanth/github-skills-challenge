@@ -11,6 +11,27 @@ high resource usage, and error logs can indicate timeouts or database connectivi
 problems. AIOps combines these signals into actionable anomaly events so that an
 operations team can inspect one consistent result instead of reviewing raw records only.
 
+## Task 1: Set Up and Understand the Environment
+
+This work was completed in a GitHub Codespace using the default configuration. The
+working copy is the fork at `Keertivanth/github-skills-challenge`; the original exercise
+repository is configured separately as the `upstream` remote. The application keeps the
+provided Python simulation structure and does not require Kafka, Airflow, or external
+cloud services.
+
+The main components are organized as follows:
+
+| Assessment area | Repository component | Purpose |
+| --- | --- | --- |
+| Operational data | `data/service_data.json` | Synthetic payment-service records |
+| Metrics and logs | `response_time_ms`, `cpu_percent`, `memory_percent`, `log_level`, `message` | Service measurements and log evidence in each record |
+| Anomaly detection | `src/anomaly_detector.py` | Applies metric thresholds and log-level checks |
+| Event production | `src/event_producer.py` | Publishes detected anomaly events |
+| Event topic | `src/event_topic.py` | Stores events in an in-memory topic |
+| Event consumption | `src/event_consumer.py` | Reads published events from the topic |
+| Final AIOps processing | `src/aiops_pipeline.py` | Loads records, runs detection, and reports results |
+| Validation | `tests/` | Checks detection and event delivery behaviour |
+
 ## Repository Components
 
 - `data/service_data.json` contains the synthetic service telemetry.
