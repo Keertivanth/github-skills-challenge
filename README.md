@@ -221,4 +221,13 @@ with meaningful messages and pushed to the fork at
 The final branch is `main`, and the latest commit is available on `origin/main`. The
 repository is ready for final submission and pull-request creation.
 
+## Final Submission Checklist
+
+- Repository: [Keertivanth/github-skills-challenge](https://github.com/Keertivanth/github-skills-challenge)
+- Branch: `main`, pushed to `origin/main`
+- Validation: `8 passed`
+- Final workflow: 10 records processed, 2 anomalies detected, 2 events consumed
+- Pull request: create a PR from the fork's `main` branch to the original exercise repository
+- Evidence to submit: operational data, detection output, event flow, final AIOps output, and successful test execution
+
 &copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
