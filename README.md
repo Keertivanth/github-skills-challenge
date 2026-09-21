@@ -160,6 +160,32 @@ The end-to-end requirements were verified as follows:
 7. The final output represented the payment-service timeout and database connection
   timeout, including the high CPU and memory evidence for the second incident.
 
+## Task 8: Run the Provided Validation
+
+The provided validation was run from the repository root with:
+
+```bash
+python3 -m pytest -q
+```
+
+All 8 tests passed. The validation confirms that:
+
+- the operational data can be loaded and processed;
+- normal records are not reported as anomalies;
+- abnormal metrics and concerning logs generate `ANOMALY` events;
+- events move through the producer and `anomaly-events` topic;
+- the consumer receives the generated events; and
+- the complete AIOps pipeline finishes with the expected output.
+
+The end-to-end execution was also rerun with:
+
+```bash
+PYTHONPATH=src python3 src/aiops_pipeline.py
+```
+
+It completed successfully with 10 records processed, 2 anomalies detected, and 2
+events consumed. No validation failures remained before submission.
+
 Validation was completed with:
 
 ```bash
