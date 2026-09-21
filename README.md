@@ -42,7 +42,7 @@ The main components are organized as follows:
 - `src/aiops_pipeline.py` loads the data and runs the end-to-end workflow.
 - `tests/` validates detection and event delivery behaviour.
 
-## Operational Data Analysis
+## Task 2: Analyse Logs and Metrics
 
 Each record has an ISO-style timestamp at one-minute intervals from `10:00` through
 `10:09` on 20 September 2026. The timestamp provides event ordering and identifies
