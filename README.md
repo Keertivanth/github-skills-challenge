@@ -168,6 +168,14 @@ python3 -m pytest -q
 
 Result: `8 passed in 0.03s`.
 
+## Task 7: Document Findings and Reproduce the Demonstration
+
+This README contains the complete written assessment record: the AIOps scenario,
+operational data description, log and metric observations, anomaly-detection findings,
+event-processing flow, final execution result, corrected workflow issues, and a known
+limitation with a possible improvement. The steps below allow another user to reproduce
+the demonstration without relying on screenshots.
+
 ## Reproduce the Demonstration
 
 1. Clone or open this repository in GitHub Codespaces or VS Code.
